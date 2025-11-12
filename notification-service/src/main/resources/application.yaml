@@ -3,6 +3,3 @@ spring:
     name: notification-service
   main:
     web-application-type: none
-
-server:
-  port: 8082
