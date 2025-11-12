@@ -1,7 +1,7 @@
 package com.jszarski.bookapi.client;
 
-import com.jszarski.bookapi.model.dto.Book;
-import com.jszarski.bookapi.model.dto.BookRating;
+import com.jszarski.bookapi.model.dto.BookDTO;
+import com.jszarski.bookapi.model.dto.BookRatingDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface BookServiceClient {
 
     @GetMapping("/book/{name}")
-    Book getBook(@PathVariable("name") String name);
+    BookDTO getBook(@PathVariable("name") String name);
 
     @PostMapping("/book")
-    void rate(@RequestBody BookRating bookRating);
+    void rate(@RequestBody BookRatingDTO bookRatingDTO);
 }

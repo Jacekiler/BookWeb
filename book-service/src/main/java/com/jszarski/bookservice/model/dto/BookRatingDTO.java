@@ -1,13 +1,14 @@
-package com.jszarski.bookapi.model.dto;
+package com.jszarski.bookservice.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-public class Book {
+public class BookRatingDTO {
     private String name;
     private String author;
     private Double rating;
-    private Integer rateCount;
 }
