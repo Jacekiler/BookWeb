@@ -1,6 +1,7 @@
 package com.jszarski.bookservice.controller;
 
 
+import com.jszarski.bookservice.model.dto.BookAddDTO;
 import com.jszarski.bookservice.model.dto.BookDTO;
 import com.jszarski.bookservice.model.dto.BookRatingDTO;
 import com.jszarski.bookservice.service.BookService;
@@ -22,6 +23,11 @@ public class BookController {
     }
 
     @PostMapping
+    public BookDTO addBook(@RequestBody BookAddDTO bookAddDTO){
+        return bookService.addBook(bookAddDTO);
+    }
+
+    @PostMapping("/rate")
     public void rate(@RequestBody BookRatingDTO bookRating){
         bookService.rate(bookRating);
     }

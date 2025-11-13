@@ -1,5 +1,6 @@
 package com.jszarski.bookservice.service;
 
+import com.jszarski.bookservice.model.dto.BookAddDTO;
 import com.jszarski.bookservice.model.dto.BookDTO;
 import com.jszarski.bookservice.model.dto.BookRatingDTO;
 import com.jszarski.bookservice.repository.BookRepository;
@@ -22,7 +23,14 @@ public class BookService {
     public Optional<BookDTO> getBook(String name) {
         log.info("Looking for book {} in db", name);
         return bookRepository.findByName(name)
-                .map(bookMapper::toDto);
+                .map(bookMapper::toBookDto);
+    }
+
+    public BookDTO addBook(BookAddDTO bookAddDTO){
+        log.info("Adding book {} to db", bookAddDTO.getName());
+        var book = bookMapper.fromAddDto(bookAddDTO);
+        var saved = bookRepository.save(book);
+        return bookMapper.toBookDto(saved);
     }
 
     @Transactional

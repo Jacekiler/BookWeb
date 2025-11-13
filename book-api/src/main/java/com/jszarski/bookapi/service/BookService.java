@@ -1,6 +1,7 @@
 package com.jszarski.bookapi.service;
 
 import com.jszarski.bookapi.client.BookServiceClient;
+import com.jszarski.bookapi.model.dto.BookAddDTO;
 import com.jszarski.bookapi.model.dto.BookDTO;
 import com.jszarski.bookapi.model.dto.BookRatingDTO;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,17 @@ public class BookService {
             return bookServiceClient.getBook(name);
         } catch (Exception e){
             // TODO implement
-            log.warn("Unsupported operation");
+            log.warn("Unsupported operation. Ex: {}", e.getMessage());
+            return null;
+        }
+    }
+
+    public BookDTO addBook(BookAddDTO bookAddDTO){
+        try {
+            return bookServiceClient.addBook(bookAddDTO);
+        } catch (Exception e){
+            // TODO implement
+            log.warn("Unsupported operation. Ex: {}", e.getMessage());
             return null;
         }
     }
@@ -29,7 +40,7 @@ public class BookService {
             bookServiceClient.rate(bookRatingDTO);
         } catch (Exception e){
             // TODO implement
-            log.warn("Unsupported operation");
+            log.warn("Unsupported operation. Ex: {}", e.getMessage());
         }
     }
 }
