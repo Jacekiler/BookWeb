@@ -6,5 +6,6 @@ CREATE TABLE IF NOT EXISTS public.book
     genre           TEXT NOT NULL,
     rating_sum      NUMERIC(9,2),
     rating_count    INTEGER DEFAULT 0,
-    rating_avg      NUMERIC(9,2)
+    rating_avg      NUMERIC(9,2),
+    CONSTRAINT unique_name_author UNIQUE (name, author)
 )
