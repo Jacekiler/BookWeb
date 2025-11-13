@@ -11,7 +11,8 @@ public class BookMapper {
         return BookDTO.builder()
                 .name(book.getName())
                 .author(book.getAuthor())
-                .rating(book.getRatingSum()/book.getRatingCount())
+                .genre(book.getGenre())
+                .avgRating(book.getRatingAvg())
                 .rateCount(book.getRatingCount())
                 .build();
     }

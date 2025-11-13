@@ -10,6 +10,7 @@ import lombok.Data;
 public class BookDTO {
     private String name;
     private String author;
-    private Double rating;
-    private Integer rateCount;
+    private String genre;
+    private int rateCount;
+    private Double avgRating;
 }
