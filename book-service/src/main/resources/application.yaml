@@ -13,6 +13,8 @@ spring:
       properties:
         hibernate:
           show_sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
 
 server:
   port: 8081
