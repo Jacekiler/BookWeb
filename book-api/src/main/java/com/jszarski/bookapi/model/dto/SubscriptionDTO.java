@@ -4,18 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubscriptionDTO {
-    private String genre;
-    private Double avgRating;
+    private UUID id;
     private String email;
-    private SubscriptionType subscriptionType;
+    private String genre;
+    private String author;
+    private Double ratingAvg;
+    private SubscriptionType type;
 }
 
-enum SubscriptionType {
-    TOP_RATED,
-    GENRE_NEW,
-    TOP_RATED_GENRE
-}

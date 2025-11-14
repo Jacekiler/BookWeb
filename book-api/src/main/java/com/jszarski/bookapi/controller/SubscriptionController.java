@@ -17,13 +17,14 @@ public class SubscriptionController {
     private final SubscriptionService subscriptionService;
 
     @GetMapping("/{email}")
-    List<SubscriptionDTO> getSubscriptions(@PathVariable String email){
+    List<SubscriptionDTO> getSubscriptions(@PathVariable("email") String email){
         log.info("GET /subscription/{}", email);
         return subscriptionService.getSubscriptions(email);
     }
 
     @PostMapping
     void subscribe(@RequestBody SubscriptionDTO subscriptionDTO){
+        //todo add validation for dto
         log.info("POST /subscription");
         subscriptionService.subscribe(subscriptionDTO);
     }

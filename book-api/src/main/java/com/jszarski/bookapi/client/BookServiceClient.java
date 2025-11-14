@@ -31,6 +31,6 @@ public interface BookServiceClient {
     @PostMapping("/subscription")
     void subscribe(@RequestBody SubscriptionDTO subscriptionDTO);
 
-    @GetMapping("/{email}")
-    List<SubscriptionDTO> getSubscriptions(@PathVariable String email);
+    @GetMapping("/subscription/{email}")
+    List<SubscriptionDTO> getSubscriptions(@PathVariable("email") String email);
 }

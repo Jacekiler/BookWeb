@@ -1,23 +1,22 @@
 package com.jszarski.bookservice.model.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.UUID;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubscriptionDTO {
-    private String genre;
-    private Double avgRating;
+    private UUID id;
     private String email;
-    private List<SubscriptionType> subscriptionTypes;
+    private String genre;
+    private String author;
+    private Double ratingAvg;
+    private SubscriptionType type;
 }
 
-enum SubscriptionType {
-    TOP_RATED,
-    GENRE_NEW,
-    TOP_RATED_GENRE
-}
