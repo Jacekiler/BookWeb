@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -19,9 +20,9 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping("/{name}")
-    public BookDTO getBookByName(@PathVariable("name") String name) {
+    public List<BookDTO> getBooksByName(@PathVariable("name") String name) {
         log.info("GET /book/{}", name);
-        return bookService.getBook(name);
+        return bookService.getBooks(name);
     }
 
     @PostMapping

@@ -17,7 +17,7 @@ import java.util.UUID;
 public interface BookServiceClient {
 
     @GetMapping("/book/{name}")
-    BookDTO getBook(@PathVariable("name") String name);
+    List<BookDTO> getBooks(@PathVariable("name") String name);
 
     @PostMapping("/book")
     BookDTO addBook(@RequestBody BookAddDTO bookAddDTO);
