@@ -22,6 +22,7 @@ public class BookService {
 
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
+    private final NotificationService notificationService;
 
     @Transactional(readOnly = true)
     public List<BookDTO> getBook(String name) {
@@ -39,6 +40,7 @@ public class BookService {
         }
         var book = bookMapper.fromAddDto(bookAddDTO);
         var saved = bookRepository.save(book);
+        notificationService.checkNew(saved);
         return bookMapper.toBookDto(saved);
     }
 

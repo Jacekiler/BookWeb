@@ -11,4 +11,6 @@ import java.util.UUID;
 public interface SubscriptionRepository extends JpaRepository<Subscription, UUID> {
 
     List<Subscription> findAllByEmail(String email);
+
+    List<Subscription> findAllByType(String type);
 }
