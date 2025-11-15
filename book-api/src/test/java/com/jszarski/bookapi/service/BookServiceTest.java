@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,14 +30,15 @@ class BookServiceTest {
         //given
         String name = "name";
         var returned = new BookDTO();
-        when(client.getBook(name)).thenReturn(returned);
+        when(client.getBooks(name)).thenReturn(List.of(returned));
 
         //when
-        var result = service.getBook(name);
+        var result = service.getBooks(name);
 
         //then
-        verify(client, times(1)).getBook(name);
-        assertEquals(returned, result);
+        verify(client, times(1)).getBooks(name);
+        assertEquals(1, result.size());
+        assertEquals(returned, result.get(0));
     }
 
     @Test

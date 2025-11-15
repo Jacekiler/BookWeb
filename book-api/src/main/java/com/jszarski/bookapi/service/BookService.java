@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -17,10 +18,10 @@ public class BookService {
 
     private final BookServiceClient bookServiceClient;
 
-    public BookDTO getBook(String name) {
+    public List<BookDTO> getBooks(String name) {
         log.info("Getting book by name {}", name);
         try {
-            return bookServiceClient.getBook(name);
+            return bookServiceClient.getBooks(name);
         } catch (Exception e){
             // TODO implement
             log.warn("Unsupported operation. Ex: {}", e.getMessage());
