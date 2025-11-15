@@ -16,7 +16,9 @@ public class NotificationEventListener {
 
     private final EmailService emailService;
 
-    @KafkaListener(topics = "notifications", groupId = "${spring.kafka.group-id}")
+    @KafkaListener(topics = "notifications",
+            groupId = "${spring.kafka.group-id}",
+            containerFactory = "notificationEventConcurrentKafkaListenerContainerFactory")
     public void listener(@Header(KafkaHeaders.RECEIVED_KEY) String key, NotificationEvent event){
         log.info("Received event with key: {}", key);
         emailService.send(event);

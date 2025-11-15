@@ -40,7 +40,9 @@ public class KafkaConsumerConfiguration {
                 ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers,
                 ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, UUIDDeserializer.class,
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class,
-                ConsumerConfig.GROUP_ID_CONFIG, groupId
+                ConsumerConfig.GROUP_ID_CONFIG, groupId,
+//                JsonDeserializer.TRUSTED_PACKAGES, "com.jszarski.common.model.dto",
+                JsonDeserializer.TRUSTED_PACKAGES, "*"
         );
     }
 }
