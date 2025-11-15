@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: book-service
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/bookdb"
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      hibernate:
+        ddl-auto: validate
+      properties:
+        hibernate:
+          show_sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+
+server:
+  port: 8081

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: book-api
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.jszarski.bookapi.client: DEBUG
+
+book-service:
+  url: localhost:8081
