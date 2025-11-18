@@ -14,29 +14,19 @@ import org.springframework.stereotype.Service;
 public class EmailService {
 
     private final JavaMailSender javaMailSender;
+    private final EmailMessageBuilder messageBuilder;
 
     public void sendNewRecommendation(NotificationEvent event) {
         log.info("Sending recommendation to {}", event.getEmail());
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(event.getEmail());
-        mailMessage.setSubject("New book recommendation");
-        mailMessage.setText("Title: " + event.getRecommendation().getName() + "\n" +
-                "Author: " + event.getRecommendation().getAuthor() + "\n" +
-                "Genre: " + event.getRecommendation().getGenre());
+        SimpleMailMessage mailMessage = messageBuilder.newRecommendationMessage(event);
         javaMailSender.send(mailMessage);
-        log.info("Mail sent to {}", event.getEmail());
+        log.info("New recommendation sent to {}", event.getEmail());
     }
 
     public void sendPopularRecommendation(NotificationEvent event) {
         log.info("Sending recommendation to {}", event.getEmail());
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(event.getEmail());
-        mailMessage.setSubject("Popular book recommendation");
-        mailMessage.setText("Title: " + event.getRecommendation().getName() + "\n" +
-                "Author: " + event.getRecommendation().getAuthor() + "\n" +
-                "Genre: " + event.getRecommendation().getGenre() + "\n " +
-                "Rating: " + event.getRecommendation().getRatingAvg());
+        SimpleMailMessage mailMessage = messageBuilder.popularRecommendationMessage(event);
         javaMailSender.send(mailMessage);
-        log.info("Mail sent to {}", event.getEmail());
+        log.info("Popular recommendation sent to {}", event.getEmail());
     }
 }
